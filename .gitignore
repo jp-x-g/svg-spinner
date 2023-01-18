@@ -1,0 +1,18 @@
+# Testing
+test*
+temp.py
+notes.txt
+testing/*
+purge_list.txt
+
+# Data
+data/*
+views/*
+combined/*
+tables/*
+metadata/*
+__pycache__/*
+
+# Config
+cfg/*
+cfg/login.txt

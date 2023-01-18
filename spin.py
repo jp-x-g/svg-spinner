@@ -57,7 +57,7 @@ def return_spinned(file, places=[1, 2, 3], values=[1, 1, 1], overlay="000000", o
 
 	for a in range(0, len(file)):
 		stringy = file[a:a+7]
-		print(f"{stringy} ({str(a).zfill(7)} of {str(len(file)).zfill(7)})")
+		# print(f"{stringy} ({str(a).zfill(7)} of {str(len(file)).zfill(7)})")
 		if (re.match(r'^#[A-Fa-f0-9]{6}$', stringy)):
 			file = file[0:a] + "#" + execute_pattern(stringy[1:], places=places, values=values, overlay=overlay, overlay_amount=overlay_amount) + file[a+7:]
 		else:
@@ -70,11 +70,18 @@ def return_spinned(file, places=[1, 2, 3], values=[1, 1, 1], overlay="000000", o
 
 
 def save_file(contents, path, filename, suffix):
-	# TODO: Make this do something.
-	print("D'oh!")
+	"""
+	Output SVG file, with contents specified, to path + filename + suffix + .svg
+	"""
+	filename = filename[0:-4] + suffix + filename[-4:]
+	savepath = path + filename
 
+	print(f"Saved to: {savepath}")
 
-
+	f = open(savepath, "w")
+	f.write(str(contents))
+	f.close()
+	print("")
 
 def spin(input_path="input.svg"):
 	input_file = input_path
@@ -96,9 +103,25 @@ def spin(input_path="input.svg"):
 	data = colordecode.decode(data)
 	# Convert, like, "fill:moccasin" to "fill:#FFE4B5".
 
+	datanew = return_spinned(data, places=[1, 3, 2], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "132")
+	datanew = return_spinned(data, places=[2, 1, 3], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "213")
+	datanew = return_spinned(data, places=[2, 3, 1], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "231")
+	datanew = return_spinned(data, places=[3, 1, 2], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "312")
 	datanew = return_spinned(data, places=[3, 2, 1], values=[1, 1, 1], overlay="000000", overlay_amount=0)
-	save_file(datanew, input_path, input_file, "123")
-	print(datanew)
+	save_file(datanew, input_path, input_file, "321")
+
+
+
+
+
+
+
+
+	# print(datanew)
 	#print(execute_pattern("1a2b3c", places=[3, 2, 1], overlay="FFFFFF", overlay_amount=0.9))
 
 	#print(data)
@@ -107,12 +130,7 @@ def spin(input_path="input.svg"):
 
 	exit()
 	
-	f = open(output, "w")
-	f.write(str(stringy))
-	f.close()
-	print("")
-	print(f"Saved to: {output}")
-	exit()
+
 
 if (__name__ == "__main__"):
 	print("TSV to Wikitable V1.0, JPxG January 2023")

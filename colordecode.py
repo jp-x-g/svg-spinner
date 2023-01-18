@@ -160,6 +160,9 @@ def decode(stringy):
 		deFr = f"fill:{key}"
 		deTo = f"fill:{allDecodes[key]}"
 		stringy = stringy.replace(deFr, deTo)
+		deFr = f"fill=\"{key}\""
+		deTo = f"fill=\"{allDecodes[key]}\""
+		stringy = stringy.replace(deFr, deTo)
 	return(stringy)
 
 if (__name__ == "__main__"):

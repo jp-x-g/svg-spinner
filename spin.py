@@ -242,11 +242,6 @@ def spin(input_path="input.svg"):
 	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="FFFFFF", overlay_amount=1.0)
 	save_file(datanew, input_path, input_file, "sil-wht")
 
-	# print(datanew)
-	#print(execute_pattern("1a2b3c", places=[3, 2, 1], overlay="FFFFFF", overlay_amount=0.9))
-
-	#print(data)
-	
 	exit()
 	
 

@@ -246,9 +246,7 @@ def spin(input_path="input.svg"):
 	#print(execute_pattern("1a2b3c", places=[3, 2, 1], overlay="FFFFFF", overlay_amount=0.9))
 
 	#print(data)
-
-	# TODO: Write the program.
-
+	
 	exit()
 	
 

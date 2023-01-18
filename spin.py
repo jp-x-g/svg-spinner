@@ -103,21 +103,55 @@ def spin(input_path="input.svg"):
 	data = colordecode.decode(data)
 	# Convert, like, "fill:moccasin" to "fill:#FFE4B5".
 
-	datanew = return_spinned(data, places=[1, 3, 2], values=[1, 1, 1], overlay="000000", overlay_amount=0)
-	save_file(datanew, input_path, input_file, "132")
-	datanew = return_spinned(data, places=[2, 1, 3], values=[1, 1, 1], overlay="000000", overlay_amount=0)
-	save_file(datanew, input_path, input_file, "213")
+	# Spin of forwards hues (123)
 	datanew = return_spinned(data, places=[2, 3, 1], values=[1, 1, 1], overlay="000000", overlay_amount=0)
 	save_file(datanew, input_path, input_file, "231")
 	datanew = return_spinned(data, places=[3, 1, 2], values=[1, 1, 1], overlay="000000", overlay_amount=0)
 	save_file(datanew, input_path, input_file, "312")
+
+	# Spin of backwards hues (321)
 	datanew = return_spinned(data, places=[3, 2, 1], values=[1, 1, 1], overlay="000000", overlay_amount=0)
 	save_file(datanew, input_path, input_file, "321")
+	datanew = return_spinned(data, places=[2, 1, 3], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "213")
+	datanew = return_spinned(data, places=[1, 3, 2], values=[1, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "132")
 
+	# Dark and bright
+	datanew = return_spinned(data, places=[1, 2, 3], values=[0.5, 0.5, 0.5], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "dark")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[2, 2, 2], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "bright")
 
+	# Dark and bright (via overlays)
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1, 1, 1], overlay="000000", overlay_amount=0.5)
+	save_file(datanew, input_path, input_file, "dark2")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1, 1, 1], overlay="FFFFFF", overlay_amount=0.5)
+	save_file(datanew, input_path, input_file, "bright2")
 
+	# Colors by doubling R, G, and B channels
+	datanew = return_spinned(data, places=[1, 2, 3], values=[2, 1, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "2r")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1, 2, 1], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "2g")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1, 1, 2], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "2b")
 
+	# Primary colors (adding 1/3 to one and subtracting 1/6 from two)
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1.333, 0.833, 0.833], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1r")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[0.833, 1.333, 0.833], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1g")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[0.833, 0.833, 1.333], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1b")
 
+	# Compound colors (adding 1/6 to two and subtracting 1/3 from one)
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1.166, 1.166, 0.666], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1y")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[0.666, 1.166, 1.166], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1c")
+	datanew = return_spinned(data, places=[1, 2, 3], values=[1.166, 0.066, 1.166], overlay="000000", overlay_amount=0)
+	save_file(datanew, input_path, input_file, "1m")
 
 
 
@@ -165,62 +199,3 @@ if (__name__ == "__main__"):
 			print("   python3 spin.py inputfile.svg")
 			print("")
 			exit()
-
-
-
-# I'm pretty sure this covers all the permutations.
-# From original hex codes: AA is full, aa is half brightness.
-# 
-# AABBCC
-# aaBBCC
-# aabbCC
-# aaBBcc
-# aabbcc
-# AAbbCC
-# AABBcc
-# AAbbcc
-# 
-# AACCBB
-# aaCCBB
-# aaccBB
-# aaCCbb
-# aaccbb
-# AAccBB
-# AACCbb
-# AAccbb
-# 
-# BBAACC
-# bbAACC
-# bbaaCC
-# bbAAcc
-# bbaacc
-# BBaaCC
-# BBAAcc
-# BBaacc
-# 
-# BBCCAA
-# bbCCAA
-# bbccAA
-# bbCCaa
-# bbccaa
-# BBccAA
-# BBCCaa
-# BBccaa
-# 
-# CCAABB
-# ccAABB
-# ccaaBB
-# ccAAbb
-# ccaabb
-# CCaaBB
-# CCAAbb
-# CCaabb
-# 
-# CCBBAA
-# ccBBAA
-# ccbbAA
-# ccBBaa
-# ccbbaa
-# CCbbAA
-# CCBBaa
-# CCbbaa

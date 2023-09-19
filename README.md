@@ -63,12 +63,12 @@ For example, `#0000FF` overlaid with `#FF0000` would be `#3F00BF` at 25%, `#7F00
 * Brighten using white `#FFFFFF` at 50% (`bright2`)
 * Darken using black `#000000` at 50% (`dark2`)
 
-* Red `#FF0000` via overlay (`o-r25`, `o-r50`, `o-r75)
-* Yellow `#FFFF00` via overlay (`o-y25`, `o-y50`, `o-y75)
-* Green `#00FF00` via overlay (`o-g25`, `o-g50`, `o-g75)
-* Cyan `#00FFFF` via overlay (`o-c25`, `o-c50`, `o-c75)
-* Blue `#0000FF` via overlay (`o-b25`, `o-b50`, `o-b75)
-* Magenta `#FF00FF` via overlay (`o-m25`, `o-m50`, `o-m75)
+* Red `#FF0000` via overlay (`o-r25`, `o-r50`, `o-r75`)
+* Yellow `#FFFF00` via overlay (`o-y25`, `o-y50`, `o-y75`)
+* Green `#00FF00` via overlay (`o-g25`, `o-g50`, `o-g75`)
+* Cyan `#00FFFF` via overlay (`o-c25`, `o-c50`, `o-c75`)
+* Blue `#0000FF` via overlay (`o-b25`, `o-b50`, `o-b75`)
+* Magenta `#FF00FF` via overlay (`o-m25`, `o-m50`, `o-m75`)
 
 ## Notes
 

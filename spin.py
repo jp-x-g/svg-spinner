@@ -164,6 +164,12 @@ def spin(input_path="input.svg"):
 	datanew = return_spinned(data, places=[1, 2, 3], values=[1.0, 1.0, 1.0], overlay="000000", overlay_amount=0, special="grayscale")
 	save_file(datanew, input_path, input_file, "gray")
 
+	# Whiteout and blackout
+	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="000000", overlay_amount=1.0)
+	save_file(datanew, input_path, input_file, "sil-blk")
+	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="FFFFFF", overlay_amount=1.0)
+	save_file(datanew, input_path, input_file, "sil-wht")
+
 	# Colors by doubling R, G, and B channels
 	datanew = return_spinned(data, places=[1, 2, 3], values=[2.0, 1.0, 1.0], overlay="000000", overlay_amount=0)
 	save_file(datanew, input_path, input_file, "2r")
@@ -236,18 +242,12 @@ def spin(input_path="input.svg"):
 	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="FF00FF", overlay_amount=0.75)
 	save_file(datanew, input_path, input_file, "o-m75")
 
-	# Whiteout and blackout
-	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="000000", overlay_amount=1.0)
-	save_file(datanew, input_path, input_file, "sil-blk")
-	datanew = return_spinned(data, places=[1, 1, 1], values=[1.0, 1.0, 1.0], overlay="FFFFFF", overlay_amount=1.0)
-	save_file(datanew, input_path, input_file, "sil-wht")
-
 	exit()
 	
 
 
 if (__name__ == "__main__"):
-	print("TSV to Wikitable V1.0, JPxG January 2023")
+	print("SVG Spinner V1.0, JPxG January 2023")
 
 	if len(sys.argv) == 1:
 		spin()
@@ -255,9 +255,9 @@ if (__name__ == "__main__"):
 	else:
 		if (sys.argv[1] == "-h") or (sys.argv[1] == "--help") or (sys.argv[1] == "help"):
 			print("> spin(input):")
-			print("  Spins colors in the SVG file.")
+			print("  Spins colors in a SVG file.")
 			print("  Default input is input.svg.")
-			print("  Creates five copies with spun hues.")
+			print("  Creates copies of the input file with spun hues.")
 			print("  Usage should be like this:")
 			print("   python3 spin.py inputfile.svg")
 			print("")
@@ -272,9 +272,9 @@ if (__name__ == "__main__"):
 			print("Error: too many arguments provided.")
 			print("")
 			print("> spin(input):")
-			print("  Spins colors in the SVG file.")
+			print("  Spins colors in a SVG file.")
 			print("  Default input is input.svg.")
-			print("  Creates five copies with spun hues.")
+			print("  Creates copies of the input file with spun hues.")
 			print("  Usage should be like this:")
 			print("   python3 spin.py inputfile.svg")
 			print("")
